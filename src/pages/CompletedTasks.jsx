@@ -9,6 +9,8 @@ function CompletedTask() {
   const [isSticky, setIsSticky] = useState(false);
   const [underLineX, setUnderLineX] = useState(0);
   const [underLineWidth, setUnderLineWidth] = useState(0);
+  const [completed,setCompleted]=useState(0);
+  const [missedTask,setMissedTask]=useState(0);
 
   const completedRefd = useRef(null);
   const missedRef = useRef(null);
@@ -17,15 +19,25 @@ function CompletedTask() {
   const UpdateMissed=async(date)=>{
     await Database.UpdateStatusMissed(date)
   }
-  const [completed, missedTask] = useMemo(() => {
-    const completed = Object.values(Tasks).filter(
+
+  const getCompleted=()=>{
+      const completed = Object.values(Tasks).filter(
       (task) => task.Status === "Completed"
     );
+    return completed;
+  }
+
+  const getMissed =()=>{
     const missed = Object.values(Tasks).filter(
       (task) => task.Status === "Missed"
     );
-    return [completed, missed];
-  }, [Tasks]);
+    return missed;
+  }
+
+  useEffect(()=>{
+    setCompleted(getCompleted());
+    setMissedTask(getMissed());
+  },[Tasks])
 
   useEffect(()=>{
     const date = new Date().toISOString();

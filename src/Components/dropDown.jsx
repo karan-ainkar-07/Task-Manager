@@ -92,7 +92,7 @@ function DropDownTasks({ infoClickedHandler = () => {}, taskInfoClickedID, TaskD
           <h2 className="text-base font-semibold text-gray-800 mb-1">{TaskDetail.Title}</h2>
           <p className="text-sm text-gray-600 mb-3">{TaskDetail.Description}</p>
           <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-500">{TaskDetail.DueDate}</span>
+            <span className="text-gray-500">{TaskDetail.DueDate.split('T')[0]}</span>
             <div className="flex gap-2">
               <span
                 className={`${CategoryColorsBG[TaskDetail.Category]} ${CategoryColorsText[TaskDetail.Category]} px-3 py-1 rounded-full text-xs font-semibold`}

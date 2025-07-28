@@ -85,7 +85,6 @@ function DueTask() {
               type="text"
               placeholder="Search..."
               className={sharedInputClass}
-              // Search logic can be added later
             />
           </div>
 

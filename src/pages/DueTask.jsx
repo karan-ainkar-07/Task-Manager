@@ -43,7 +43,7 @@ function DueTask() {
     {
       filtered =filtered.filter((task)=>
       {
-        return task.Title.contains(searchedValue);
+        return task.Title.toLowerCase().includes(searchedValue.toLowerCase());
       })
     }
 

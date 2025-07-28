@@ -53,7 +53,7 @@ function DueTask() {
     }
 
     return filtered;
-  }, [Tasks, selectedDay, filterValue, sortValue]);
+  }, [Tasks, selectedDay, filterValue, sortValue,searchedValue]);
   
   const sharedStyle = `relative transition-all duration-300 ease-in-out ${
     isSmallScreen ? "max-w-12 hover:max-w-full focus-within:max-w-full" : "w-full"
@@ -89,6 +89,11 @@ function DueTask() {
         >
           <div className={sharedStyle}>
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+            {searchedValue && (
+              <button onClick={() => setSearchValue("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500">
+                ×
+              </button>
+            )}
             <input
               type="text"
               placeholder="Search..."

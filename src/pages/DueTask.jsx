@@ -10,6 +10,7 @@ function DueTask() {
   const Tasks = useSelector((state) => state.tasks.Tasks);
   const [filterValue, setFilterValue] = useState("");
   const [sortValue, setSortValue] = useState("");
+  const [searchedValue,setSearchValue] =useState("");
   const [taskInfoClickedID, setTaskInfoClickedID] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [selectedDay, setSelectedDay] = useState(new Date().toISOString().split("T")[0]);
@@ -17,7 +18,6 @@ function DueTask() {
   const handleFilter = (e) => setFilterValue(e.target.value);
   const handleSort = (e) => setSortValue(e.target.value);
 
-  // Handle screen size
   useEffect(() => {
     const handleResize = () => setIsSmallScreen(window.innerWidth <= 564);
     handleResize();
@@ -37,6 +37,14 @@ function DueTask() {
           task.Type === filterValue 
         );
       });
+    }
+
+    if(searchedValue)
+    {
+      filtered =filtered.filter((task)=>
+      {
+        return task.Title.contains(searchedValue);
+      })
     }
 
     if (sortValue === "Priority") {
@@ -85,6 +93,8 @@ function DueTask() {
               type="text"
               placeholder="Search..."
               className={sharedInputClass}
+              value={searchedValue}
+              onChange={(e)=>{setSearchValue(e.target.value)}}
             />
           </div>
 

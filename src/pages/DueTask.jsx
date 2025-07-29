@@ -89,17 +89,14 @@ function DueTask() {
           }`}
         >
           {console.log(clickedAction)}
-          <div 
-            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Search") ? "w-full" : "max-w-12" }`}
-            onClick={()=>{
-              if(clickedAction==="Search")
-              {
-                setClickedAction("");
-                return;
-              }
-              setClickedAction("Search")
+          <div
+            className={`${sharedStyle} ${
+              isSmallScreen && clickedAction === "Search" ? "w-full" : isSmallScreen ? "max-w-12" : "max-w-full"
+            }`}
+            onClick={() => {
+              setClickedAction(clickedAction === "Search" ? "" : "Search");
             }}
-            >
+          >
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             {searchedValue && (
               <button onClick={() => setSearchValue("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500">
@@ -115,16 +112,13 @@ function DueTask() {
             />
           </div>
 
-          <div 
-            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Sort") ? "w-full" : "max-w-12" }`}
-            onClick={()=>{
-              if(clickedAction==="Sort")
-              {
-                setClickedAction("");
-                return;
-              }
-              setClickedAction("Sort")
-            }}
+            <div
+              className={`${sharedStyle} ${
+                isSmallScreen && clickedAction === "Sort" ? "w-full" : isSmallScreen ? "max-w-12" : "max-w-full"
+              }`}
+              onClick={() => {
+                setClickedAction(clickedAction === "Sort" ? "" : "Sort");
+              }}
             >
             <SortAsc className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <select value={sortValue} onChange={handleSort} className={sharedInputClass}>
@@ -139,16 +133,13 @@ function DueTask() {
             </select>
           </div>
 
-          <div 
-            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Filter") ? "w-full" : "max-w-12" }`}
-            onClick={()=>{
-              if(clickedAction==="Filter")
-              {
-                setClickedAction("");
-                return;
-              }
-              setClickedAction("Filter")
-            }}
+            <div
+              className={`${sharedStyle} ${
+                isSmallScreen && clickedAction === "Filter" ? "w-full" : isSmallScreen ? "max-w-12" :"max-w-full"
+              }`}
+              onClick={() => {
+                setClickedAction(clickedAction === "Filter" ? "" : "Filter");
+              }}
             >
             <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <select value={filterValue} onChange={handleFilter} className={sharedInputClass}>

@@ -90,7 +90,7 @@ function DueTask() {
         >
           {console.log(clickedAction)}
           <div 
-            className={`${sharedStyle} ${(clickedAction==="Search") ? "w-full" : "max-w-12" }`}
+            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Search") ? "w-full" : "max-w-12" }`}
             onClick={()=>{
               if(clickedAction==="Search")
               {
@@ -116,7 +116,7 @@ function DueTask() {
           </div>
 
           <div 
-            className={`${sharedStyle} ${(clickedAction==="Sort") ? "w-full" : "max-w-12" }`}
+            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Sort") ? "w-full" : "max-w-12" }`}
             onClick={()=>{
               if(clickedAction==="Sort")
               {
@@ -140,7 +140,7 @@ function DueTask() {
           </div>
 
           <div 
-            className={`${sharedStyle} ${(clickedAction==="Filter") ? "w-full" : "max-w-12" }`}
+            className={`${sharedStyle} ${(isSmallScreen && clickedAction==="Filter") ? "w-full" : "max-w-12" }`}
             onClick={()=>{
               if(clickedAction==="Filter")
               {

@@ -30,7 +30,7 @@ const TaskSlice=createSlice(
                 {
                     state.Tasks[UpdateStatusId]={
                         ...state.Tasks[UpdateStatusId],
-                        Status:"Complete",
+                        Status:"Completed",
                         CompleteDate:CompleteDate
                     }
                 }

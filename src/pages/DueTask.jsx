@@ -14,6 +14,7 @@ function DueTask() {
   const [taskInfoClickedID, setTaskInfoClickedID] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [selectedDay, setSelectedDay] = useState(new Date().toISOString().split("T")[0]);
+  const [clickedAction,setClickedAction]=useState(null);
 
   const handleFilter = (e) => setFilterValue(e.target.value);
   const handleSort = (e) => setSortValue(e.target.value);
@@ -56,7 +57,7 @@ function DueTask() {
   }, [Tasks, selectedDay, filterValue, sortValue,searchedValue]);
   
   const sharedStyle = `relative transition-all duration-300 ease-in-out ${
-    isSmallScreen ? "max-w-12 hover:max-w-full focus-within:max-w-full" : "w-full"
+    isSmallScreen ? "focus-within:max-w-full" : "w-full"
   } overflow-hidden border border-gray-300 rounded-lg pl-10 pr-3 py-2 bg-white text-sm font-semibold shadow-sm focus-within:ring-2 focus-within:ring-blue-500`;
 
   const sharedInputClass = `w-full focus:outline-none ${isSmallScreen ? "bg-transparent" : ""}`;
@@ -87,7 +88,18 @@ function DueTask() {
             isSmallScreen ? "justify-start" : "justify-between"
           }`}
         >
-          <div className={sharedStyle}>
+          {console.log(clickedAction)}
+          <div 
+            className={`${sharedStyle} ${(clickedAction==="Search") ? "w-full" : "max-w-12" }`}
+            onClick={()=>{
+              if(clickedAction==="Search")
+              {
+                setClickedAction("");
+                return;
+              }
+              setClickedAction("Search")
+            }}
+            >
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             {searchedValue && (
               <button onClick={() => setSearchValue("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500">
@@ -103,7 +115,17 @@ function DueTask() {
             />
           </div>
 
-          <div className={sharedStyle}>
+          <div 
+            className={`${sharedStyle} ${(clickedAction==="Sort") ? "w-full" : "max-w-12" }`}
+            onClick={()=>{
+              if(clickedAction==="Sort")
+              {
+                setClickedAction("");
+                return;
+              }
+              setClickedAction("Sort")
+            }}
+            >
             <SortAsc className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <select value={sortValue} onChange={handleSort} className={sharedInputClass}>
               <option value="" disabled hidden>Sort</option>
@@ -117,7 +139,17 @@ function DueTask() {
             </select>
           </div>
 
-          <div className={sharedStyle}>
+          <div 
+            className={`${sharedStyle} ${(clickedAction==="Filter") ? "w-full" : "max-w-12" }`}
+            onClick={()=>{
+              if(clickedAction==="Filter")
+              {
+                setClickedAction("");
+                return;
+              }
+              setClickedAction("Filter")
+            }}
+            >
             <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <select value={filterValue} onChange={handleFilter} className={sharedInputClass}>
               <option value="" disabled hidden>Filter</option>

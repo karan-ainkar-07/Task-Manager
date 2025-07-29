@@ -117,7 +117,7 @@ useEffect(()=>{
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
+              className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 2xl:hidden"
             />
 
             {/* Sidebar */}
@@ -126,7 +126,7 @@ useEffect(()=>{
               animate={{ x: 0 }}
               exit={{ x: -240 }}
               transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-              className="fixed top-0 left-0 h-full w-56 bg-[#fff] backdrop-blur-md shadow-lg p-4 z-50 rounded-r-2xl       flex flex-col gap-5 lg:hidden"
+              className="fixed top-0 left-0 h-full w-56 bg-[#fff] backdrop-blur-md shadow-lg p-4 z-50 rounded-r-2xl       flex flex-col gap-5 2xl:hidden"
             >
               <div className="flex justify-between">
                 <p className="text-lg font-bold text-gray-800">Menu</p>
@@ -142,7 +142,7 @@ useEffect(()=>{
                   + Add Task
                 </button>
         
-                <button className="bg-red-700 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-semibold text-left transition duration-300"
+                <button className="bg-red-700 z-5 hover:bg-red-600 text-white px-4 py-2 rounded-xl text-sm font-semibold text-left transition duration-300"
                 onClick={async()=>
                 {
                   try{
@@ -183,7 +183,7 @@ useEffect(()=>{
         )}
       </AnimatePresence>
 
-      <button className="absolute lg:inline-block hidden top-4 right-4  bg-red-700 p-2 px-6 text-lg font-bold text-white rounded-2xl "
+      <button className="absolute 2xl:inline-block  hidden top-4 right-4  bg-red-700 p-2 px-6 text-lg font-bold text-white rounded-2xl "
         onClick={async()=>
         {
           try{
@@ -209,11 +209,11 @@ useEffect(()=>{
             👋 Welcome back, {user?.name ? user.name.split(" ")[0] : "User"}
           </h1>
           <Link to="/AddTask" className="cursor-pointer">
-            <button className="hidden lg:block bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-sm md:text-base font-semibold transition duration-300">
+            <button className="hidden 2xl:block bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-sm md:text-base font-semibold transition duration-300">
               + New Task
             </button>
           </Link>
-          <Menu className="lg:hidden inline-block h-5 w-5 "
+          <Menu className="2xl:hidden inline-block h-5 w-5 "
                 onClick={()=>{setSidebar((prev)=>!prev)}}
           >
           </Menu>
